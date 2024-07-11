@@ -1,0 +1,18 @@
+header {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #D0CFD4;
+
+  .input-group {
+    border-radius: 50px;
+  }
+  input {
+    border: none;
+    outline: none;
+  }
+}
+
+.header-list {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3)
+}
