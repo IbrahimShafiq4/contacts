@@ -1,18 +1,59 @@
-header {
+.contacts {
+  height: 592px;
+  overflow-y: scroll;
+}
+.contacts header {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  background-color: #D0CFD4;
-
-  .input-group {
-    border-radius: 50px;
-  }
-  input {
-    border: none;
-    outline: none;
-  }
+  background-color: #d0cfd4;
+}
+.contacts .input-group {
+  border-radius: 50px;
+}
+.contacts input {
+  border: none;
+  outline: none;
+}
+.contacts .header-list {
+  background-color: #f8f8f8;
+  border-bottom: 1px solid rgba(#000000, 0.1);
+}
+.contacts::-webkit-scrollbar {
+  width: 20px;
+}
+.contacts::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #9ed2c5;
+  border-radius: 10px;
+}
+.contacts::-webkit-scrollbar-thumb {
+  background: #8195c5;
+  border-radius: 10px;
+}
+.contacts aside {
+  right: 13.2%;
+  top: 11%;
+}
+.contacts aside span {
+  font-size: 0.6rem;
+  font-weight: bold;
+  transition: 0.2s linear;
+  cursor: pointer;
+  width: 10px;
+  height: 15px;
+}
+.contacts aside .highlight {
+  font-size: 1rem;
+}
+.contacts aside .highlight-prev {
+  font-size: 0.9rem;
+}
+.contacts aside .highlight-next {
+  font-size: 0.9rem;
 }
 
-.header-list {
-  background-color: #f8f8f8;
-  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3)
+.contacts aside .highlight-prev-prev {
+  font-size: 0.7rem;
+}
+.contacts aside .highlight-next-next {
+  font-size: 0.7rem;
 }

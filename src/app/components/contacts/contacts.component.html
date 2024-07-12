@@ -1,28 +1,52 @@
-<div class="container w-25 mx-auto my-2">
+<section class="container w-lg-25 w-md-50 mx-auto my-2 contacts">
   <header class="p-3">
     <div class="input-group p-2 bg-white d-flex justify-content-center">
       <span class="input-group-text border-0 bg-transparent" id="basic-addon1">
         <i class="bi bi-search"></i>
       </span>
-      <input type="text" placeholder="Search Contacts" aria-label="Search" aria-describedby="basic-addon1" [(ngModel)]="searchTerm" (input)="filterContacts()">
+      <input type="text" placeholder="Search Contacts" aria-label="Search" aria-describedby="basic-addon1"
+        [(ngModel)]="searchTerm" (input)="filterContacts()">
     </div>
   </header>
-  <div class="d-flex justify-content-between align-items-center py-1 px-2 header-list">
-    <p class="m-0">Add New Contacts</p>
-    <button class="bg-transparent outline-0 border-0 fs-4">
+  <article class="d-flex justify-content-between align-items-center py-1 px-2 header-list">
+    <p class="m-0" role="button">Add New Contacts</p>
+    <button class="bg-transparent outline-0 border-0 fs-4" [routerLink]="'/add-contact'">
       <i class="bi bi-plus"></i>
     </button>
-  </div>
-  <div *ngFor="let letter of letters">
-    <div class="main-header">
-      <div class="header-list py-1 px-2">
-        <p class="m-0">{{ letter }}</p>
-        <ng-container *ngIf="getContactsByLetter(letter).length > 0">
-          <div *ngFor="let contact of getContactsByLetter(letter)" class="px-3 py-2 rounded-1 border-bottom my-2 bg-white">
-            <p class="m-0">{{ contact.firstName }} {{ contact.lastName }}</p>
-          </div>
-        </ng-container>
+  </article>
+  <article class="position-relative">
+    <div *ngFor="let letter of letters" #letterHeader>
+      <div class="main-header">
+        <div class="header-list py-1 px-2">
+          <p class="m-0">{{ letter }}</p>
+          <ng-container *ngIf="getContactsByLetter(letter).length > 0">
+            <div *ngFor="let contact of getContactsByLetter(letter)"
+              class="px-3 py-2 rounded-1 border-bottom my-2 bg-white">
+              <div class="d-flex align-items-center gap-2">
+                <figure>
+                  <img [src]="contact.image" alt="">
+                </figure>
+                <div>
+                  <p class="m-0">{{ contact.firstName }} {{ contact.lastName }}</p>
+                  <p class="m-0"> {{ contact.mobileNumber }} </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    <aside class="position-fixed d-flex flex-column">
+      <span class="m-0" *ngFor="let letter of letters; let i = index" (mouseenter)="highlightLetters(i)"
+        (mouseleave)="resetHighlight()" (click)="scrollToLetter(i)" [ngClass]="{
+          'highlight': i === highlightedIndex,
+          'highlight-prev': i === (highlightedIndex !== null ? highlightedIndex - 1 : null),
+          'highlight-next': i === (highlightedIndex !== null ? highlightedIndex + 1 : null),
+          'highlight-prev-prev': i === (highlightedIndex !== null ? highlightedIndex - 2 : null),
+          'highlight-next-next': i === (highlightedIndex !== null ? highlightedIndex + 2 : null)
+        }">
+        {{ letter }}
+      </span>
+    </aside>
+  </article>
+</section>

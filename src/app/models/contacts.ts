@@ -6,6 +6,7 @@ export interface IContacts {
   firstName: string;
   lastName: string;
   id: string;
+  image?: string;
 }
 
 export interface IAddContact {
